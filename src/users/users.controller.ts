@@ -1,6 +1,6 @@
 import { Controller, Get, Post, ParseIntPipe, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User } from './user.entity'
+import { User } from './users.entity'
 
 @Controller('users')
 export class UsersController {
@@ -11,13 +11,8 @@ export class UsersController {
         return this.usersService.getAll();
     }
 
-    @Get(':id')
-    getOneById(@Param('id', new ParseIntPipe()) id) {
-        return this.usersService.getOneById(id);
-    }
-
     @Get(':name')
-    getOneByName(@Param('name') name){
+    getOneByName(@Param('name') name: string): Promise<User> {
         return this.usersService.getOneByName(name);
     }
 }
