@@ -9,7 +9,7 @@ export class UsersService {
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
     ) {}
-
+    
     async getAll(): Promise<User[]> {
         return await this.userRepository.find();
     }
@@ -17,6 +17,12 @@ export class UsersService {
     async getOneById(id: number){
         return await this.userRepository.findOne({
             id: id,
+        })
+    }
+
+    async getOneByName(name: string){
+        return await this.userRepository.findOne({
+            name: name,
         })
     }
 }
