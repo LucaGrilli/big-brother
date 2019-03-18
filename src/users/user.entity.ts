@@ -5,11 +5,11 @@ export class User {
     @ObjectIdColumn()
     id: ObjectID;
 
+    @Column({ length: 100})
+    name: string;
+
     @Column({ length: 300})
     email: string;
-
-    @Column({ length: 100})
-    username: string;
 
     @Column()
     phone: number;

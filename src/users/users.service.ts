@@ -17,13 +17,13 @@ export class UsersService {
 
     async getOneByName(username: string): Promise<User>{
         return await this.userRepository.findOne({
-            username: username,
+            name: username,
         })
     }
 
     async create(createUserDto: CreateUserDto){
         let user = new User();
-        user.username = createUserDto.name;
+        user.name = createUserDto.name;
         user.email = createUserDto.email;
         user.phone = createUserDto.phone;
         await this.userRepository.save(user);
