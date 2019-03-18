@@ -22,7 +22,7 @@ export class UsersService {
     }
 
     async create(createUserDto: CreateUserDto){
-        let user = new User();
+        const user = new User();
         user.name = createUserDto.name;
         user.email = createUserDto.email;
         user.phone = createUserDto.phone;
