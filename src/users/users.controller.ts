@@ -1,8 +1,6 @@
 import { Controller, Get, Post, ParseIntPipe, Param, Body } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './user.entity'
-import { async } from 'rxjs/internal/scheduler/async';
-import { request } from 'https';
 import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
