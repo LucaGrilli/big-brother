@@ -13,8 +13,8 @@ export class UsersController {
     }
 
     @Get(':username')
-    async getOneByName(@Param('username') username: string): Promise<User> {
-        return await this.usersService.getOneByName(username);
+    async getOneByUsername(@Param('username') username: string): Promise<User> {
+        return await this.usersService.getOneByUsername(username);
     }
 
     @Post()

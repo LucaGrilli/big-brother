@@ -9,7 +9,7 @@ export class User {
     @Column({ length: 50 })
     @IsNotEmpty()
     @Index({ unique: true })
-    name: string;
+    username: string;
 
     @Column({ length: 100 })
     @IsNotEmpty()
@@ -25,8 +25,8 @@ export class User {
     @Column()
     phone: number;
 
-    constructor(name: string, email: string, firstname: string, lastname: string){
-        this.name = name;
+    constructor(username: string, email: string, firstname: string, lastname: string){
+        this.username = username;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
