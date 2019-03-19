@@ -1,4 +1,4 @@
-import { Injectable, Post } from "@nestjs/common";
+import { Injectable, HttpException, HttpStatus } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "./user.entity";
 import { Repository } from "typeorm";
@@ -18,11 +18,11 @@ export class UsersService {
     async getOneByName(username: string): Promise<User>{
         return await this.userRepository.findOne({
             name: username,
-        })
+        });
     }
 
     async create(createUserDto: CreateUserDto){
-        await this.userRepository.save(new User(
+        await this.userRepository.insert(new User(
             createUserDto.name,
             createUserDto.email,
             createUserDto.firstname,
