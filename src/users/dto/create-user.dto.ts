@@ -2,11 +2,8 @@ import { IsInt, IsString } from 'class-validator';
 
 export class CreateUserDto {
   @IsString()
-  readonly name: string;
+  readonly nickName: string;
 
   @IsString()
   readonly email: string;
-
-  @IsInt()
-  readonly phone: number;
 }
