@@ -1,28 +1,42 @@
 import { Entity, Column, ObjectIdColumn, ObjectID, Index } from 'typeorm';
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsPhoneNumber, IsEmail, IsAlpha, MaxLength } from 'class-validator';
 
 @Entity()
 export class User {
     @ObjectIdColumn()
     id: ObjectID;
 
-    @Column({ length: 50 })
+    @Column()
+    @MaxLength(30)
     @IsNotEmpty()
     @Index({ unique: true })
+    @IsString()
     username: string;
 
-    @Column({ length: 100 })
+    @Column()
+    @MaxLength(100)
     @IsNotEmpty()
     @Index({unique: true})
+    @IsEmail()
     email: string;
 
-    @Column({ length: 30 })
+    @Column()
+    @MaxLength(30)
+    @IsNotEmpty()
+    @IsString()
+    @IsAlpha()
     firstname: string;
-    
-    @Column({ length: 30 })
+
+    @Column()
+    @MaxLength(30)
+    @IsNotEmpty()
+    @IsString()
+    @IsAlpha()
     lastname: string;
 
     @Column()
+    @IsOptional()
+    @IsPhoneNumber("IT")
     phone: number;
 
     constructor(username: string, email: string, firstname: string, lastname: string){
