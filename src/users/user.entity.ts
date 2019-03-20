@@ -1,42 +1,90 @@
 import { Entity, Column, ObjectIdColumn, ObjectID, Index } from 'typeorm';
 import { IsNotEmpty, IsOptional, IsString, IsPhoneNumber, IsEmail, IsAlpha, MaxLength, IsMongoId } from 'class-validator';
+import { HttpException, HttpStatus } from '@nestjs/common';
 
 @Entity()
 export class User {
     @ObjectIdColumn()
     @IsMongoId()
-    id: ObjectID;
+    private _id: ObjectID;
 
     @Column()
-    @MaxLength(30)
     @IsNotEmpty()
+    @MaxLength(30)
     @Index({ unique: true })
     @IsString()
-    username: string;
+    private _username: string;
 
     @Column()
-    @MaxLength(100)
     @IsNotEmpty()
+    @MaxLength(100)
     @Index({unique: true})
     @IsEmail()
-    email: string;
+    private _email: string;
 
     @Column()
-    @MaxLength(100)
     @IsNotEmpty()
+    @MaxLength(100)
     @IsString()
     @IsAlpha()
-    fullname: string;
+    private _fullname: string;
 
     @Column()
     @IsOptional()
     @IsPhoneNumber("IT")
-    phone: number;
+    private _phone: number;
 
-    constructor(username: string, email: string, fullname: string, phone: number){
-        this.username = username;
-        this.email = email;
-        this.fullname = fullname;
-        this.phone = phone;
+    get id(): ObjectID {
+        return this._id;
+    }
+
+    get username(): string {
+        return this._username;
+    }
+
+    set username(username: string){
+        if(username == null){
+            throw new HttpException(
+                'Username cannot be null',
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+        this._username = username;
+    }
+
+    get email(): string {
+        return this._email;
+    }
+
+    set email(email: string){
+        if(email == null){
+            throw new HttpException(
+                'Email cannot be null',
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+        this._email = email.toLowerCase();
+    }
+
+    get fullname(): string {
+        return this._fullname;
+    }
+
+    set fullname(fullname: string){
+        if(fullname == null){
+            throw new HttpException(
+                'Fullname cannot be null',
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+        this._fullname = fullname;
+    }
+
+    get phone(): number {
+        return this._phone;
+    }
+
+    set phone(phone: number){
+        this._phone = phone;
     }
 }

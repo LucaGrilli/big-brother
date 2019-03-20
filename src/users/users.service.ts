@@ -22,11 +22,11 @@ export class UsersService {
     }
 
     async create(createUserDto: CreateUserDto){
-        await this.userRepository.insertOne(new User(
-            createUserDto.username,
-            createUserDto.email,
-            createUserDto.fullname,
-            createUserDto.phone,
-        ));
+        const user = new User();
+        user.username = createUserDto.username;
+        user.email = createUserDto.email;
+        user.fullname = createUserDto.fullname;
+        user.phone = createUserDto.phone;
+        await this.userRepository.insertOne(new User());
     }
 }
