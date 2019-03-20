@@ -14,6 +14,7 @@ export class User {
     @Index({ unique: true })
     @IsString()
     private _username: string;
+    
 
     @Column()
     @IsNotEmpty()
@@ -37,7 +38,7 @@ export class User {
     get id(): ObjectID {
         return this._id;
     }
-
+    
     get username(): string {
         return this._username;
     }

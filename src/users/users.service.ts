@@ -16,17 +16,15 @@ export class UsersService {
     }
 
     async getOneByUsername(username: string): Promise<User>{
-        return await this.userRepository.findOne({
-            username: username,
-        });
+        return await this.userRepository.findOne();
     }
 
     async create(createUserDto: CreateUserDto){
-        const user = new User();
-        user.username = createUserDto.username;
-        user.email = createUserDto.email;
-        user.fullname = createUserDto.fullname;
-        user.phone = createUserDto.phone;
-        await this.userRepository.insertOne(new User());
+        let user = new User();
+        user.username = createUserDto._username;
+        user.email = createUserDto._email;
+        user.fullname = createUserDto._fullname;
+        user.phone = createUserDto._phone;
+        await this.userRepository.insertOne(user);
     }
 }
