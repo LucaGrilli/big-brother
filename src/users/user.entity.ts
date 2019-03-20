@@ -38,7 +38,7 @@ export class User {
     get id(): ObjectID {
         return this._id;
     }
-    
+
     get username(): string {
         return this._username;
     }
