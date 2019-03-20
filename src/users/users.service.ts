@@ -23,10 +23,10 @@ export class UsersService {
 
     async create(createUserDto: CreateUserDto){
         await this.userRepository.insertOne(new User(
-            createUserDto.name,
+            createUserDto.username,
             createUserDto.email,
-            createUserDto.firstname,
-            createUserDto.lastname,
+            createUserDto.fullname,
+            createUserDto.phone,
         ));
     }
 }
