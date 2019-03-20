@@ -1,9 +1,10 @@
 import { Entity, Column, ObjectIdColumn, ObjectID, Index } from 'typeorm';
-import { IsNotEmpty, IsOptional, IsString, IsPhoneNumber, IsEmail, IsAlpha, MaxLength } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsPhoneNumber, IsEmail, IsAlpha, MaxLength, IsMongoId } from 'class-validator';
 
 @Entity()
 export class User {
     @ObjectIdColumn()
+    @IsMongoId()
     id: ObjectID;
 
     @Column()
@@ -21,28 +22,21 @@ export class User {
     email: string;
 
     @Column()
-    @MaxLength(30)
+    @MaxLength(100)
     @IsNotEmpty()
     @IsString()
     @IsAlpha()
-    firstname: string;
-
-    @Column()
-    @MaxLength(30)
-    @IsNotEmpty()
-    @IsString()
-    @IsAlpha()
-    lastname: string;
+    fullname: string;
 
     @Column()
     @IsOptional()
     @IsPhoneNumber("IT")
     phone: number;
 
-    constructor(username: string, email: string, firstname: string, lastname: string){
+    constructor(username: string, email: string, fullname: string, phone: number){
         this.username = username;
         this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.fullname = fullname;
+        this.phone = phone;
     }
 }
