@@ -10,6 +10,15 @@ export class UsersService {
         @InjectRepository(User)
         private readonly userRepository: MongoRepository<User>,
     ) {}
+
+    async create(createUserDto: CreateUserDto){
+        const user = new User();
+        user.username = createUserDto.username;
+        user.email = createUserDto.email;
+        user.fullname = createUserDto.fullname;
+        user.phone = createUserDto.phone;
+        await this.userRepository.insertOne(user);
+    }
     
     async getAll(): Promise<User[]> {
         return await this.userRepository.find();
@@ -25,14 +34,5 @@ export class UsersService {
         await this.userRepository.delete({
             username: username
         });
-    }
-
-    async create(createUserDto: CreateUserDto){
-        const user = new User();
-        user.username = createUserDto.username;
-        user.email = createUserDto.email;
-        user.fullname = createUserDto.fullname;
-        user.phone = createUserDto.phone;
-        await this.userRepository.insertOne(user);
     }
 }
