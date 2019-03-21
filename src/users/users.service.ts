@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { User } from "./user.entity";
+import { User } from "./entities/user.entity";
 import { MongoRepository } from "typeorm";
 import { UserDto } from "./dto/user.dto";
 
@@ -17,6 +17,7 @@ export class UsersService {
         user.email = userDto.email;
         user.fullname = userDto.fullname;
         user.phone = userDto.phone;
+        user.role = userDto.role;
         await this.userRepository.insertOne(user);
     }
     

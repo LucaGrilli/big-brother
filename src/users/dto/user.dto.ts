@@ -1,4 +1,5 @@
 import { IsString, IsEmail, IsAlpha, IsPhoneNumber } from 'class-validator';
+import { Role } from '../enums/role.enum';
 
 export class UserDto {
 
@@ -14,4 +15,6 @@ export class UserDto {
 
   @IsPhoneNumber("IT")
   readonly phone: number;
+
+  readonly role: Role;
 }

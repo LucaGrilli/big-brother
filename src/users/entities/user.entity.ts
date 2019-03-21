@@ -1,5 +1,6 @@
 import { Entity, Column, ObjectIdColumn, ObjectID, Index } from 'typeorm';
 import { IsOptional, IsString, IsPhoneNumber, IsEmail, IsAlpha, MaxLength, IsMongoId } from 'class-validator';
+import { Role } from '../enums/role.enum';
 
 @Entity('users')
 export class User {
@@ -29,4 +30,7 @@ export class User {
     @IsOptional()
     @IsPhoneNumber("IT")
     public phone: number;
+
+    @Column()
+    public role: Role;
 }
