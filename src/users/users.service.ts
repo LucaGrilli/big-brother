@@ -15,6 +15,12 @@ export class UsersService {
         return await this.userRepository.find();
     }
 
+    async getOneByUsername(username: string): Promise<User> {
+        return await this.userRepository.findOne({
+            username: username
+        });
+    }
+
     async create(createUserDto: CreateUserDto){
         let user = new User();
         user.username = createUserDto.username;
