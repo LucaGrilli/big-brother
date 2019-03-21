@@ -1,6 +1,5 @@
 import { Entity, Column, ObjectIdColumn, ObjectID, Index } from 'typeorm';
 import { IsOptional, IsString, IsPhoneNumber, IsEmail, IsAlpha, MaxLength, IsMongoId } from 'class-validator';
-import { HttpException, HttpStatus } from '@nestjs/common';
 
 @Entity('users')
 export class User {
