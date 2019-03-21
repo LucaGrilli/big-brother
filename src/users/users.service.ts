@@ -21,8 +21,14 @@ export class UsersService {
         });
     }
 
+    async delete(username: string) {
+        await this.userRepository.delete({
+            username: username
+        });
+    }
+
     async create(createUserDto: CreateUserDto){
-        let user = new User();
+        const user = new User();
         user.username = createUserDto.username;
         user.email = createUserDto.email;
         user.fullname = createUserDto.fullname;
