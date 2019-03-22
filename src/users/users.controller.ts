@@ -8,7 +8,7 @@ export class UsersController {
     constructor(private readonly usersService: UsersService) {}
 
     @Post()
-    @UsePipes(new ValidationPipe())
+    @UsePipes(ValidationPipe)
     async create(@Body() userDto: UserDto) {
         await this.usersService.create(userDto);
     }
