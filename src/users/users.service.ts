@@ -12,12 +12,13 @@ export class UsersService {
     ) {}
 
     async create(userDto: CreateUserDto){
-        const user = new User();
-        user.username = userDto.username;
-        user.email = userDto.email;
-        user.fullname = userDto.fullname;
-        user.phone = userDto.phone;
-        user.role = userDto.role;
+        const user = new User(
+            userDto.username,
+            userDto.email,
+            userDto.fullname,
+            userDto.phone,
+            userDto.role
+        )
         await this.userRepository.insertOne(user);
     }
     
