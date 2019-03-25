@@ -4,7 +4,7 @@ import { IPv4 } from "ip-num/IPv4";
 export class CreateDeviceDto {
     @IsIP()
     @IsNotEmpty()
-    readonly ip: IPv4;
+    readonly ip: string;
   
     @IsString()
     @IsNotEmpty()

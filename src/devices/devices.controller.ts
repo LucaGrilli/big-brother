@@ -6,20 +6,19 @@ import { ObjectID } from "typeorm";
 
 @Controller('devices')
 export class DevicesController {
-    deviceService: any;
-    constructor(private readonly DevicesService: DevicesService) {}
+    constructor(private readonly devicesService: DevicesService) {}
 
     @Post()
     @UsePipes(ValidationPipe)
-    async create(@Body() userDto: CreateDeviceDto) {
-        await this.deviceService.create(userDto);
+    async create(@Body() deviceDto: CreateDeviceDto) {
+        await this.devicesService.create(deviceDto);
     }
     @Get()
     async getAny(): Promise<Device[]> {
-        return await this.deviceService.getAny();
+        return await this.devicesService.getAny();
     }
     @Delete(':id')
     async delete(@Param('id') id: ObjectID) {
-        await this.deviceService.delete(id);
+        await this.devicesService.delete(id);
     }
 }

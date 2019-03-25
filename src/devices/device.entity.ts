@@ -1,6 +1,6 @@
 import { Entity, ObjectIdColumn, ObjectID, Column, Index } from "typeorm";
-import { Role } from "src/users/enums/role.enum";
 import { IPv4 } from "ip-num/IPv4";
+
 @Entity('devices')
 export class Device {
     @ObjectIdColumn()
@@ -8,7 +8,7 @@ export class Device {
 
     @Column()
     @Index({ unique: true})
-    public ip:IPv4;
+    public ip: IPv4;
 
     @Column()
     @Index({ unique: true})
@@ -18,8 +18,8 @@ export class Device {
     public name: string;
 
     
-    constructor(ip: IPv4, macaddress:string, name: string){
-        this.ip = ip;
+    constructor(ip: IPv4, macaddress: string, name: string){
+        this.ip = ip
         this.macaddress = macaddress;
         this.name = name;
         
