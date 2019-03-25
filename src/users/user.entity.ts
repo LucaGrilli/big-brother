@@ -1,5 +1,5 @@
 import { Entity, Column, ObjectIdColumn, ObjectID, Index } from 'typeorm';
-import { Role } from '../enums/role.enum';
+import { Role } from './enums/role.enum';
 
 @Entity('users')
 export class User {
