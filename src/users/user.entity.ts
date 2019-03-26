@@ -1,10 +1,10 @@
-import { Entity, Column, ObjectIdColumn, ObjectID, Index } from 'typeorm';
+import { Entity, Column, Index, PrimaryGeneratedColumn } from 'typeorm';
 import { Role } from './enums/role.enum';
 
 @Entity('users')
 export class User {
-    @ObjectIdColumn()
-    public _id: ObjectID;
+    @PrimaryGeneratedColumn()
+    public id: number;
 
     @Column()
     @Index({ unique: true})
