@@ -1,5 +1,5 @@
-import { Entity, Column, Index, PrimaryGeneratedColumn } from 'typeorm';
-import { Role } from './enums/role.enum';
+import { Entity, Column, Index, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Role } from '../roles/roles.entity'
 
 @Entity('users')
 export class User {
@@ -20,7 +20,7 @@ export class User {
     @Column({ nullable: true})
     public phone: number;
 
-    @Column()
+    @ManyToOne(() => Role)
     public role: Role;
 
     constructor(username: string, email: string, fullname: string, phone: number, role: Role){

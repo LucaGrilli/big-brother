@@ -1,5 +1,5 @@
 import { IsString, IsEmail, IsPhoneNumber, IsNotEmpty, IsOptional, IsEnum, MaxLength } from 'class-validator';
-import { Role } from '../enums/role.enum';
+import { Role } from 'src/modules/roles/roles.entity';
 
 export class CreateUserDto {
 
@@ -22,6 +22,5 @@ export class CreateUserDto {
   @IsOptional()
   readonly phone: number;
 
-  @IsEnum(Role)
   readonly role: Role;
 }

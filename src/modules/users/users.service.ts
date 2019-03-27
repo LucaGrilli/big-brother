@@ -17,18 +17,31 @@ export class UsersService {
             userDto.email,
             userDto.fullname,
             userDto.phone,
-            userDto.role
+            userDto.role,
         )
         await this.userRepository.insert(user);
     }
     
     async getAll(): Promise<User[]> {
-        return await this.userRepository.find();
+        return await this.userRepository.find({
+            join: {
+                alias: "user",
+                leftJoinAndSelect: {
+                    role: "user.role",
+                }
+            },
+        });
     }
 
     async getOneByUsername(username: string): Promise<User> {
         return await this.userRepository.findOne({
-            username: username
+            where: {username: username},
+            join: {
+                alias: "user",
+                leftJoinAndSelect: {
+                    role: "user.role",
+                }
+            },
         });
     }
 
