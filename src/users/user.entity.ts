@@ -1,5 +1,6 @@
 import { Entity, Column, Index, PrimaryGeneratedColumn } from 'typeorm';
 import { Role } from './enums/role.enum';
+import { IsOptional } from 'class-validator';
 
 @Entity('users')
 export class User {
@@ -17,7 +18,7 @@ export class User {
     @Column()
     public fullname: string;
 
-    @Column()
+    @Column({ nullable: true})
     public phone: number;
 
     @Column()
