@@ -17,6 +17,7 @@ export class UsersService{
             userDto.email,
             userDto.fullname,
             userDto.phone,
+            userDto.groups,
         ))
     }
 
