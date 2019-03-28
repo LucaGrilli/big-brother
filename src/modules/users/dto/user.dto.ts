@@ -11,5 +11,6 @@ export class UserDto{
     readonly fullname: string;
 
     @IsPhoneNumber("IT")
+    @IsOptional()
     readonly phone: string;
 }

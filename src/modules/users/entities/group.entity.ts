@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
-@Entity('grups')
+@Entity('GroupsT')
 export class Group {
     @PrimaryGeneratedColumn()
     public id: number;
@@ -11,4 +11,8 @@ export class Group {
         unique: true,
     })
     public name: string;
+
+    constructor(name: string){
+        this.name = name;
+    }
 }
