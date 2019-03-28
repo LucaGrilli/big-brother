@@ -1,6 +1,7 @@
-import { Post, UsePipes, ValidationPipe, Delete, Param, Controller, Body } from "@nestjs/common";
+import { Post, UsePipes, ValidationPipe, Delete, Param, Controller, Body, Get } from "@nestjs/common";
 import { UserDto } from "../dto/user.dto";
 import { UsersService } from "../services/users.service";
+import { User } from "../entities/user.entity";
 
 @Controller('users')
 export class UsersController{
@@ -10,6 +11,16 @@ export class UsersController{
     @UsePipes(ValidationPipe)
     async create(@Body() userDto: UserDto){
         await this.usersService.create(userDto);
+    }
+
+    @Get()
+    async getAll(): Promise<User[]> {
+        return await this.usersService.getAll();
+    }
+
+    @Get(':username')
+    async getOneByUsername(@Param('username') username: string): Promise<User> {
+        return await this.usersService.getOneByUsername(username);
     }
 
     @Delete(':username')

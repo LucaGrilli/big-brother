@@ -21,6 +21,29 @@ export class UsersService{
         ))
     }
 
+    async getAll(): Promise<User[]> {
+        return await this.usersRepository.find({
+            join: {
+                alias: "user",
+                leftJoinAndSelect: {
+                    groups: "user.groups",
+                }
+            },
+        });
+    }
+
+    async getOneByUsername(username: string): Promise<User> {
+        return await this.usersRepository.findOne({
+            where: {username: username},
+            join: {
+                alias: "user",
+                leftJoinAndSelect: {
+                    groups: "user.groups",
+                }
+            },
+        });
+    }
+
     async delete(username: string){
         await this.usersRepository.delete({
             username: username,
