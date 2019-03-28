@@ -12,7 +12,28 @@ export class Group {
     })
     public name: string;
 
-    constructor(name: string){
+    @Column({
+        type: "boolean"
+    })
+    public writePerm: boolean;
+    @Column({
+        type: "boolean"
+    })
+    public readPerm: boolean; 
+    @Column({
+        type: "boolean"
+    })
+    public updatePerm: boolean; 
+    @Column({
+        type: "boolean"
+    })
+    public deletePerm: boolean; 
+
+    constructor(name: string, writePerm: boolean, readPerm: boolean, updatePerm: boolean, deletePerm: boolean){
         this.name = name;
+        this.writePerm = writePerm;
+        this.readPerm = readPerm;
+        this.updatePerm = updatePerm;
+        this.deletePerm = deletePerm;
     }
 }

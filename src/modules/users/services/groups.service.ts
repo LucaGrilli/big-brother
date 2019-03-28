@@ -14,6 +14,10 @@ export class GroupsService {
     async create(groupDto: GroupDto){
         await this.groupsRepository.save(new Group(
             groupDto.name,
+            groupDto.writePerm,
+            groupDto.readPerm,
+            groupDto.updatePerm,
+            groupDto.deletePerm,
         ));
     }
 
