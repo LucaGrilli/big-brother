@@ -18,7 +18,7 @@ export class DevicesController {
         return await this.devicesService.getAny();
     }
     @Delete(':id')
-    async delete(@Param('id') id: ObjectID) {
+    async delete(@Param('id') id: number) {
         await this.devicesService.delete(id);
     }
 }

@@ -22,7 +22,7 @@ export class DevicesService {
         await this.deviceRepository.insertOne(device);
     }
 
-    async delete(id: ObjectID) {
+    async delete(id: number) {
         await this.deviceRepository.delete({
             _id: id
         });

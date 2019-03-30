@@ -1,10 +1,10 @@
-import { Entity, ObjectIdColumn, ObjectID, Column, Index } from "typeorm";
+import { Entity, ObjectIdColumn, ObjectID, Column, Index, PrimaryGeneratedColumn } from "typeorm";
 import { IPv4 } from "ip-num/IPv4";
 
 @Entity('devices')
 export class Device {
-    @ObjectIdColumn()
-    public _id: ObjectID;
+    @PrimaryGeneratedColumn()
+    public _id: number;
 
     @Column()
     @Index({ unique: true})
