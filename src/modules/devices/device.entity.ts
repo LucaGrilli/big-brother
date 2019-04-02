@@ -6,11 +6,9 @@ export class Device {
     public id: number;
 
     @Column({ unique: true})
-    @Index()
     public ip: string;
 
-    @Column()
-    @Index({ unique: true})
+    @Column({ unique: true})
     public macaddress: string;
 
     @Column()

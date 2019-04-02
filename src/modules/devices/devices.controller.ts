@@ -13,10 +13,12 @@ export class DevicesController {
     async create(@Body() deviceDto: CreateDeviceDto) {
         await this.devicesService.create(deviceDto);
     }
+
     @Get()
     async getAll(): Promise<Device[]> {
         return await this.devicesService.getAll();
     }
+    
     @Delete(':id')
     async delete(@Param('id') id: number) {
         await this.devicesService.delete(id);
