@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Connection } from 'typeorm';
+import { DevicesModule } from './devices/devices.module';
 import { UsersModule } from './modules/users/users.module';
+import { Connection } from 'typeorm';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     UsersModule,
+    DevicesModule,
   ],
 })
 export class AppModule {
