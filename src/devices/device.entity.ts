@@ -4,10 +4,10 @@ import { IPv4 } from "ip-num/IPv4";
 @Entity('devices')
 export class Device {
     @PrimaryGeneratedColumn()
-    public _id: number;
+    public id: number;
 
-    @Column()
-    @Index({ unique: true})
+    @Column({ unique: true})
+    @Index()
     public ip: IPv4;
 
     @Column()

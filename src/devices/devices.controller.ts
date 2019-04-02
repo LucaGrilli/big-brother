@@ -14,8 +14,8 @@ export class DevicesController {
         await this.devicesService.create(deviceDto);
     }
     @Get()
-    async getAny(): Promise<Device[]> {
-        return await this.devicesService.getAny();
+    async getAll(): Promise<Device[]> {
+        return await this.devicesService.getAll();
     }
     @Delete(':id')
     async delete(@Param('id') id: number) {

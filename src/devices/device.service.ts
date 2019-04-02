@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { MongoRepository, ObjectID } from "typeorm";
+import { Repository } from "typeorm";
 import { Device } from "./device.entity";
 import { CreateDeviceDto } from "./dto/create-device.dto";
 import { IPv4 } from "ip-num/IPv4";
@@ -9,7 +9,7 @@ import { IPv4 } from "ip-num/IPv4";
 export class DevicesService {
     constructor (
         @InjectRepository(Device)
-        private readonly deviceRepository: MongoRepository<Device>,
+        private readonly deviceRepository: Repository<Device>,
     ) {}
 
 
@@ -24,11 +24,11 @@ export class DevicesService {
 
     async delete(id: number) {
         await this.deviceRepository.delete({
-            _id: id
+            id: id
         });
 
     }
-    async getAny(): Promise<Device[]> {
+    async getAll(): Promise<Device[]> {
         return await this.deviceRepository.find();
     }
 }
