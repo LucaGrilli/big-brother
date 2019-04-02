@@ -3,7 +3,6 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Device } from "./device.entity";
 import { CreateDeviceDto } from "./dto/create-device.dto";
-import { IPv4 } from "ip-num/IPv4";
 
 @Injectable()
 export class DevicesService {
@@ -15,11 +14,11 @@ export class DevicesService {
 
     async create (deviceDto: CreateDeviceDto){
         const device = new Device(
-           new IPv4(deviceDto.ip),
+           deviceDto.ip,
            deviceDto.macaddress,
             deviceDto.name,
         )
-        await this.deviceRepository.insertOne(device);
+        await this.deviceRepository.insert(device);
     }
 
     async delete(id: number) {

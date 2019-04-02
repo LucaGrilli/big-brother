@@ -1,5 +1,4 @@
 import { Entity, ObjectIdColumn, ObjectID, Column, Index, PrimaryGeneratedColumn } from "typeorm";
-import { IPv4 } from "ip-num/IPv4";
 
 @Entity('devices')
 export class Device {
@@ -8,7 +7,7 @@ export class Device {
 
     @Column({ unique: true})
     @Index()
-    public ip: IPv4;
+    public ip: string;
 
     @Column()
     @Index({ unique: true})
@@ -18,7 +17,7 @@ export class Device {
     public name: string;
 
     
-    constructor(ip: IPv4, macaddress: string, name: string){
+    constructor(ip: string, macaddress: string, name: string){
         this.ip = ip
         this.macaddress = macaddress;
         this.name = name;
